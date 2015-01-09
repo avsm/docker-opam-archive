@@ -2,4 +2,5 @@
 FROM avsm/docker-opam-build:ubuntu-14.04-ocaml-4.02.1-system
 MAINTAINER Anil Madhavapeddy <anil@recoil.org>
 RUN sudo -u opam sh -c "OPAMYES=1 OPAMJOBS=2 opam installext lwt tls cohttp"
-RUN sudo -u opam sh -c "cd /home/opam/opam-repository && opam-admin make"
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull && opam-admin make"
+ONBUILD RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull && opam-admin make"
