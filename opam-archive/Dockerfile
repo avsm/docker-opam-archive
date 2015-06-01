@@ -4,5 +4,6 @@ MAINTAINER Anil Madhavapeddy <anil@recoil.org>
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master"
 RUN sudo -u opam sh -c "opam update -u -y"
 RUN sudo -u opam sh -c "OPAMYES=1 OPAMJOBS=2 opam depext -u -i lwt ssl tls cohttp"
+RUN sudo -u opam sh -c "opam update -u -y"
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && opam-admin make"
 ONBUILD RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull && opam-admin make"
